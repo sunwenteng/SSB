@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+  "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<!-- 扫描根节点包目录 -->
+	<constant name="struts.convention.package.locators" value="action" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.devMode" value="false" />
+
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<constant name="struts.objectFactory.spring.autoWire" value="auto" />
+	<!-- 指定允许上传的文件最大字节数,默认值是2097152(2M),使用struts常量扩大默认上传文件大小 -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<!-- 浏览器静态缓存 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+
+	<constant name="struts.convention.classes.reload" value="false" />
+	<!-- Action命名风格 首字母小写 -->
+	<bean type="org.apache.struts2.convention.ActionNameBuilder" name="defaultConvention"
+		class="org.apache.struts2.convention.DefaultActionNameBuilder" />
+	<constant name="struts.convention.actionNameBuilder" value="defaultConvention" />
+
+
+	<package name="MyPackage" extends="struts-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<interceptors>
+			<interceptor name="tools" class="com.bingo.interceptor.ToolInterceptor" />
+			<interceptor name="json"
+				class="org.apache.struts2.json.JSONInterceptor" />
+			<interceptor-stack name="MyStack">
+				<interceptor-ref name="tools" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="MyStack"></default-interceptor-ref>
+	</package>
+
+</struts>

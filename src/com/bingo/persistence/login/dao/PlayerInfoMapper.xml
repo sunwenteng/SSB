@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bingo.persistence.login.dao.PlayerInfoMapper">
+	
+	<select id="getByNameAndServerId" resultType="PlayerInfo" parameterType="map">
+		select * from player_info as p, re_passport_player as r where p.role_id = r.role_id and r.server_id=#{serverid} and p.name=#{username}
+	</select>
+	
+</mapper>

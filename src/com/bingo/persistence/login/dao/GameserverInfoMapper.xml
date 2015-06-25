@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bingo.persistence.login.dao.GameserverInfoMapper">
+	
+	<select id="getAll" resultType="GameserverInfo">
+		select * from gameserver_info
+	</select>
+	
+	<select id="update" parameterType="GameserverInfo">
+		update gameserver_info
+		set
+			gameserver_info.res_version=#{res_version},
+			gameserver_info.version=#{version},
+			gameserver_info.server_name=#{server_name}
+		where 
+			gameserver_info.server_id=#{server_id}
+	</select>
+	
+</mapper>

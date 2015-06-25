@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- "CREATE TABLE IF NOT EXISTS login_strategy ("
+			"auto_id		INT		UNSIGNED	NOT NULL	AUTO_INCREMENT,"
+			"strategy_id	INT		UNSIGNED	NOT NULL,"
+			"condition_id	TINYINT	UNSIGNED	NOT NULL,"
+			"type			TINYINT	UNSIGNED	NOT NULL,"
+			"value			VARCHAR(64) CHARACTER SET utf8 NOT NULL,"
+			"PRIMARY KEY(auto_id)"
+		") ENGINE=InnoDB DEFAULT CHARSET=utf8;" -->
+
+<mapper namespace="com.bingo.persistence.tools.dao.GMMapper">
+	<select id="createTable" statementType="STATEMENT">
+		CREATE TABLE IF NOT EXISTS gm (
+			id 			INT 		UNSIGNED			NOT NULL	auto_increment,
+			gmname			VARCHAR(1000) 	CHARACTER SET utf8	NOT NULL DEFAULT '',
+			format			VARCHAR(1000) 	CHARACTER SET utf8	NOT NULL DEFAULT '',
+			param			VARCHAR(1000) 	CHARACTER SET utf8	NOT NULL DEFAULT '',
+			gmdesc			VARCHAR(1000) 	CHARACTER SET utf8	NOT NULL DEFAULT '',
+			PRIMARY KEY (id)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8
+	</select>
+	
+	<select id="getAll" resultType="GM">
+		select * from gm;
+	</select>
+	
+<!-- 	<select id="createTimeIndex" statementType="STATEMENT">
+	    CREATE INDEX ${value}_time_indx ON ${value} (time)
+	</select>
+	<select id="createPlayeridIndex" statementType="STATEMENT">
+	    CREATE INDEX ${value}_playerid_indx ON ${value} (playerid)
+	</select>
+	<select id="createOptIndex" statementType="STATEMENT">
+	    CREATE INDEX ${value}_opt_indx ON ${value} (opt)
+	</select>
+	
+	<insert id="insert" statementType="STATEMENT" parameterType="map">
+		insert into ${tableName}(
+			log.id,
+			log.time,
+			log.loglvl,
+			log.playerid,
+			log.opt,
+			log.func,
+			log.cmt
+		)
+		values
+		(
+			${log.id},
+			${log.time},
+			${log.loglvl},
+			${log.playerid},
+			${log.opt},
+			${log.func},
+			${log.cmt}
+		)
+	</insert>
+	
+	<insert id="update" parameterType="Log">
+		update pictures
+		set
+			pictures.title=#{title},
+			pictures.author=#{author},
+			pictures.time=#{time},
+			pictures.zh=#{zh},
+			pictures.bj=#{bj},
+			pictures.hs=#{hs},
+			pictures.piecetypeid=#{piecetypeid},
+			pictures.score=#{score},
+			pictures.commet=#{commet},
+			pictures.url=#{url}
+		where 
+			pictures.id=#{id}
+	</insert>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from pictures where id = #{id} 
+	</delete>		
+ -->	
+</mapper>

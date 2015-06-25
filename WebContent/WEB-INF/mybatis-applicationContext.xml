@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- 加载配置文件 -->
+	<bean id="configBean"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- enable autowire -->
+	<!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<!-- enable transaction demarcation with annotations -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- 数据源配置 -->
+
+	<!-- tools -->
+	<bean id="toolsDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${tools.jdbc.driverClassName}"></property>
+		<property name="url" value="${tools.jdbc.dburl}"></property>
+		<property name="username" value="${tools.jdbc.username}"></property>
+		<property name="password" value="${tools.jdbc.password}"></property>
+		<property name="logAbandoned" value="false" />
+		<property name="validationQuery" value="SELECT 1" />
+    	<property name="testOnBorrow" value="true"/>
+	</bean>
+
+	<bean id="toolsTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="toolsDataSource" />
+	</bean>
+
+	<bean id="toolsSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="toolsDataSource" />
+		<property name="typeAliasesPackage" value="com.bingo.persistence.tools.domain" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.bingo.persistence.tools.dao" />
+		<property name="sqlSessionFactory" ref="toolsSqlSessionFactory" />
+	</bean>
+
+	<!-- login -->
+	<bean id="loginDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${login.jdbc.driverClassName}"></property>
+		<property name="url" value="${login.jdbc.dburl}"></property>
+		<property name="username" value="${login.jdbc.username}"></property>
+		<property name="password" value="${login.jdbc.password}"></property>
+		<property name="logAbandoned" value="false" />
+		<property name="validationQuery" value="SELECT 1" />
+    	<property name="testOnBorrow" value="true"/>
+	</bean>
+
+	<bean id="loginTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="loginDataSource" />
+	</bean>
+
+	<bean id="loginSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="loginDataSource" />
+		<property name="typeAliasesPackage" value="com.bingo.persistence.login.domain" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.bingo.persistence.login.dao" />
+		<property name="sqlSessionFactory" ref="loginSqlSessionFactory" />
+	</bean>
+
+</beans>

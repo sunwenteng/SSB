@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>This is designed By Elvis Sun</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+		<link rel="stylesheet" href="css/cmn/EyeBall.css" type="text/css"
+			media="screen" />
+		<link rel="stylesheet" href="css/cmn/fonts.css" type="text/css"
+			media="screen" />
+		<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.min.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/bootstrap/font-awesome.min.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/bootstrap/bootswatch.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/cmn/EyeBall.css" type="text/css"
+			media="screen" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<style>
+		  div#dialog-form { font-size: 62.5%; }
+		</style>
+			
+		<script src="js/jq/jquery-1.7.1.min.js"></script>
+		<script src="js/jq/jquery-ui.js"></script>
+	 	<script src="js/bh_core.js" charset="UTF-8"></script>
+	 	<script src="js/bh_business.js" charset="UTF-8">
+	 	</script>
+			
+	</head>
+
+<body onload="onload()" onunload="onunload()">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">BHTools</a>
+				<div class="nav-collapse collapse" id="main-menu">
+					<ul class="nav" id="main-menu-left">
+						<li>
+							<a id="ipHref" class="brand" href="/BHTools/portal/fixSSHConnect"></a>
+						</li>
+						<li>
+							<select id="selectServer" class="navbar-inner-select"></select>
+						</li>
+					</ul>
+					<ul class="nav pull-right" id="main-menu-right">
+						<li><a href=""> 兄弟项目 <i class="icon-share-alt"></i>
+						</a></li>
+						<li><a href="./bootstrap.html">友情链接
+								<i class="icon-share-alt"></i>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+	
+<!-- logo
+================================================== -->
+	<br><br><br>
+	<header class="jumbotron subhead" id="overview">
+	  <div class="row">
+	    <div class="span6">
+	      <h1>萌果-Pitaya</h1>
+	      <p class="lead">A fucking great game empire.</p>
+	    </div>
+	    <div class="span6">
+	      <div class="bsa well">
+	          <div id="bsap_1277971" class="bsarocks bsap_c466df00a3cd5ee8568b5c4983b6bb19"></div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="subnav">
+	    <ul class="nav nav-pills">
+	      <li><a id="serverToolsHref" href="#serverTools">服务器工具</a></li>
+	      <li><a id="gmcmdHref" href="#gmcmd">GM命令</a></li>
+	    </ul>
+	  </div>
+	</header>
+	
+<section id="serverTools">
+  <div class="page-header">
+    <h1>服务器工具</h1>
+  </div>
+<div class="row">
+	
+	<div class="span4" id="divReleaseVersion">
+	    <div class="control-group">
+			<input type="button" class="btn btn-primary btn-large" id="restartServer" value="重启游戏服务器"/><br/>
+		</div>
+		<div class="control-group">
+			<input type="button" class="btn btn-primary btn-large" id="releaseServer" value="发布游戏服务器"/><br/>
+		</div>
+	</div>
+	
+	<div class="span4" id="divReleaseClient">
+			<div class="control-group">
+				<a href="http://172.16.0.97/versions/version.cfg">提示：点击查看<b>内网</b>资源服务器版本号...</a><br/>
+				<a href="http://42.62.67.68/bh/version.cfg">提示：点击查看<b>外网</b>资源服务器版本号...</a>
+	            <label class="control-label" for="input01">分支名称：（不填写默认trunk）</label>
+	            <div class="controls">
+	              <select id="releaseBranchesName"></select>
+	            </div>
+	          </div>
+	          <div class="control-group">
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" id="releaseOutServerOption" />
+				<b>是否发布到外网服务器</b>
+              </label>
+            </div>
+          </div>
+         <div class="control-group">
+		<input type="button" class="btn btn-primary btn-large" id="releaseResource" value="发布资源"/>
+		</div>
+	</div>
+
+</div>
+</section>
+
+<section id="gmcmd">
+  <div class="page-header">
+    <h1>GM命令</h1>
+  </div>
+	<table id="gmTable" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>GM命令</th>
+        <th>输入规范（大小写不敏感）</th>
+        <th>参数说明（标准输入）</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+</section>
+
+<section id="expand1">
+  <div class="page-header">
+    <h1>待扩展1</h1>
+  </div>
+
+ 建设中...
+
+</section>
+
+</div>
+		<div id="dialog-form" title="输出结果，将在10分钟后自动关闭"></div>
+	    <script src="js/bootstrap/jquery.smooth-scroll.min.js"></script>
+	    <script src="js/bootstrap//bootstrap.min.js"></script>
+	    <script src="js/bootstrap//bootswatch.js"></script>
+	</body>
+</html>
