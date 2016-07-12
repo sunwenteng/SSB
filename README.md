@@ -1,7 +1,7 @@
 # SSB Documentation
 
 ## Summary
-This Project is Based on Struts2.2, Spring3.0, MyBatis3.0 which I settle it for practice and need to my GameWebTools. Server is based on Apache Tomcat 6.*. I suppose this project is pretty quick for you to settle a web project. I offer some practice samples within each package. The code quality is about to get improved since I no longer use java to make big project.
+This Project is Based on Struts2.2, Spring3.0, MyBatis3.0 which I build for practice and need to my GameWebTools. Server is based on Apache Tomcat 6.*. I suppose this project is pretty quick for you to build a web project. I offer some practice samples within each package. The code quality is about to get improved since I no longer use java to make big project.
 
 ##1. JSCH
 Use Java SSH to do some linux bash call.
